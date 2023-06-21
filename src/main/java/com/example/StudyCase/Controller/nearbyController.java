@@ -18,14 +18,14 @@ public class nearbyController {
 
     private final NearbyService nearbyService;
 
-     @GetMapping()
+     @GetMapping("/sade")
      @ResponseStatus(HttpStatus.OK)
-    private NearbyResponse getNearbyLocation(@RequestBody NearbyRequest nearbyRequest) throws IOException {
-         return nearbyService.getLocation(nearbyRequest);
+    private Response getNearbyLocation( ) throws IOException {
+         return nearbyService.getLocation();
     }
     @GetMapping("/simple")
     @ResponseStatus(HttpStatus.OK)
-    private Response getNearbyResponseLocation(@RequestBody NearbyRequest nearbyRequest) throws IOException {
-        return nearbyService.getResponseLocation(nearbyRequest);
+    private Response getNearbyResponseLocation( ) throws IOException {
+        return nearbyService.getResponseLocation();
     }
 }

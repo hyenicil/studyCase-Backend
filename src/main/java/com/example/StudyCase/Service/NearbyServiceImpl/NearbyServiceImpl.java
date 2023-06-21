@@ -11,19 +11,40 @@ import java.io.IOException;
 @Service
 public class NearbyServiceImpl implements NearbyService {
     @Override
-    public NearbyResponse getLocation(NearbyRequest nearbyRequest) throws IOException {
-        return null;
+    public Response getLocation() throws IOException {
+        HttpUrl mySearchUrl = new HttpUrl.Builder()
+                .scheme("https")
+                .host("maps.googleapis.com")
+                .addPathSegment("maps")
+                .addPathSegment("api")
+                .addPathSegment("place")
+                .addPathSegment("nearbysearch")
+                .addPathSegment("json")
+                .addQueryParameter("location","-33.8670522,151.1957362")
+                .addQueryParameter("radius","1500")
+                .addQueryParameter("key","AIzaSyDKiYmQddIuGh9NQsH6n4SIHDYUoFNS6Xk").build();
+        System.out.println(mySearchUrl);
+        Request request1 = new Request.Builder()
+                .url(mySearchUrl)
+                .addHeader("Accept","application/json")
+                .method("GET",null)
+                .build();
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
+        Response response = client.newCall(request1).execute();
+        System.out.println(response);
+        return response;
     }
 
     @Override
-    public Response getResponseLocation(NearbyRequest nearbyRequest) throws IOException {
+    public Response getResponseLocation() throws IOException {
         OkHttpClient client = new OkHttpClient().newBuilder().build();
         MediaType mediaType = MediaType.parse("text/plain");
         RequestBody body = RequestBody.create(mediaType, "");
         Request request = new Request.Builder()
-                .url("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&keyword=cruise&key=YOUR_API_KEY")
+                .url("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&key=AIzaSyDKiYmQddIuGh9NQsH6n4SIHDYUoFNS6Xk")
                 .method("GET", body)
                 .build();
+        System.out.println();
         Response response = client.newCall(request).execute();
         return response;
     }

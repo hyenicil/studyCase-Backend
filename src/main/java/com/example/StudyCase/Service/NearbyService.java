@@ -7,7 +7,7 @@ import okhttp3.Response;
 import java.io.IOException;
 
 public interface NearbyService {
-    NearbyResponse getLocation(NearbyRequest nearbyRequest) throws IOException;
+    Response getLocation( ) throws IOException;
 
-    Response getResponseLocation(NearbyRequest nearbyRequest) throws IOException;
+    Response getResponseLocation( ) throws IOException;
 }

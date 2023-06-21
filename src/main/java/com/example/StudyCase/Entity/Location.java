@@ -2,16 +2,13 @@ package com.example.StudyCase.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
-@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "location")
 public class Location extends Base{
     private double latitude;

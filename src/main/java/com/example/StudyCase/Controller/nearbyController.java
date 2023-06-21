@@ -1,11 +1,11 @@
 package com.example.StudyCase.Controller;
 
-import com.example.StudyCase.Dto.Request.NearbyRequest;
-import com.example.StudyCase.Dto.Response.NearbyResponse;
 import com.example.StudyCase.Service.NearbyService;
 import lombok.RequiredArgsConstructor;
 import okhttp3.Response;
+import org.json.JSONException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -20,8 +20,8 @@ public class nearbyController {
 
      @GetMapping("/sade")
      @ResponseStatus(HttpStatus.OK)
-    private Response getNearbyLocation( ) throws IOException {
-         return nearbyService.getLocation();
+    private void getNearbyLocation( ) throws IOException, JSONException {
+          nearbyService.getLocation();
     }
     @GetMapping("/simple")
     @ResponseStatus(HttpStatus.OK)

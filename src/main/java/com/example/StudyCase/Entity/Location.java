@@ -3,15 +3,18 @@ package com.example.StudyCase.Entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "location")
 public class Location extends Base{
-    private double latitude;
-    private double longitude;
-//    private double radius; Buradamı yoksa ana kısımda mı kullansam emin olamadım.
+    private String name;
+    private String  latitude;
+    private String longitude;
+    private List<String> types;
+
 }

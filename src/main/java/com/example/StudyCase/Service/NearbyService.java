@@ -1,20 +1,14 @@
 package com.example.StudyCase.Service;
 
 import com.example.StudyCase.Dto.Request.NearbyRequest;
-import okhttp3.Response;
+import com.example.StudyCase.Dto.Response.LocationResponse;
 import org.json.JSONException;
-import org.springframework.http.ResponseEntity;
 
 import java.io.IOException;
+import java.util.List;
 
 public interface NearbyService {
+    List<LocationResponse> getTransactions(NearbyRequest nearbyRequest) throws IOException, JSONException;
 
-
-    void getLocation( ) throws IOException, JSONException;
-
-    Response getResponseLocation( ) throws IOException;
-
-    String getUrl(NearbyRequest nearbyRequest) throws IOException;
-
-    void getTransactions(NearbyRequest nearbyRequest) throws IOException, JSONException;
+    List<LocationResponse> getMainMethod(NearbyRequest nearbyRequest) throws JSONException, IOException;
 }

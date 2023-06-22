@@ -1,7 +1,6 @@
 package com.example.StudyCase.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
 
@@ -10,11 +9,15 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "location")
+@Table(name = "locations")
 public class Location extends Base{
+    @OneToOne
+    @JoinColumn(name = "nearbyId")
+    private Nearby nearby;
     private String name;
     private String  latitude;
     private String longitude;
     private List<String> types;
+
 
 }

@@ -12,5 +12,6 @@ import lombok.NoArgsConstructor;
 public class NearbyRequest{
     private String longitude;
     private String latitude;
-    private String radius;
+    private int radius;
+
 }
